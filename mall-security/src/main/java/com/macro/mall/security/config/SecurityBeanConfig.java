@@ -10,7 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * @Author komorebi
- * @Data 2022-04-4
+ * @Date 2022-04-4
  * This bean is used to generate beans for security configuration.
  */
 @Configuration
@@ -62,4 +62,5 @@ public class SecurityBeanConfig {
     public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter() {
         return new JwtAuthenticationTokenFilter();
     }
+
 }

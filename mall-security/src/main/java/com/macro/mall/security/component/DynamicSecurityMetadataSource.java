@@ -12,29 +12,36 @@ import javax.annotation.PostConstruct;
 import java.util.*;
 
 /**
+ * @Author komorebi 2022-04-05
+ * @Date 2022-04-05
  * 动态权限数据源，用于获取动态权限规则
  * Created by macro on 2020/2/7.
  */
 public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
     private static Map<String, ConfigAttribute> configAttributeMap = null;
-    @Autowired
     private DynamicSecurityService dynamicSecurityService;
 
     @PostConstruct
     public void loadDataSource() {
-        configAttributeMap = dynamicSecurityService.loadDataSource();
+        if (Objects.nonNull(dynamicSecurityService)) {
+            configAttributeMap = dynamicSecurityService.loadDataSource();
+        }
     }
 
     public void clearDataSource() {
-        configAttributeMap.clear();
-        configAttributeMap = null;
+        if (Objects.nonNull(configAttributeMap)) {
+            configAttributeMap.clear();
+            configAttributeMap = null;
+        }
     }
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {
-        if (configAttributeMap == null) this.loadDataSource();
-        List<ConfigAttribute>  configAttributes = new ArrayList<>();
+        if (configAttributeMap == null) {
+            this.loadDataSource();
+        }
+        List<ConfigAttribute> configAttributes = new ArrayList<>();
         //获取当前访问的路径
         String url = ((FilterInvocation) o).getRequestUrl();
         String path = URLUtil.getPath(url);
@@ -61,4 +68,8 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
         return true;
     }
 
+    @Autowired(required = false)
+    public void setDynamicSecurityService(DynamicSecurityService dynamicSecurityService) {
+        this.dynamicSecurityService = dynamicSecurityService;
+    }
 }
