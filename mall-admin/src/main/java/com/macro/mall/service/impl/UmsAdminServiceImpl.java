@@ -44,25 +44,34 @@ import java.util.List;
 @Service
 public class UmsAdminServiceImpl implements UmsAdminService {
     private static final Logger LOGGER = LoggerFactory.getLogger(UmsAdminServiceImpl.class);
-    @Autowired
     private JwtTokenUtil jwtTokenUtil;
-    @Autowired
     private PasswordEncoder passwordEncoder;
-    @Autowired
     private UmsAdminMapper adminMapper;
-    @Autowired
     private UmsAdminRoleRelationMapper adminRoleRelationMapper;
-    @Autowired
     private UmsAdminRoleRelationDao adminRoleRelationDao;
-    @Autowired
     private UmsAdminLoginLogMapper loginLogMapper;
-    @Autowired
     private UmsAdminCacheService adminCacheService;
+
+    @Autowired
+    public UmsAdminServiceImpl(JwtTokenUtil jwtTokenUtil, PasswordEncoder passwordEncoder,
+                               UmsAdminMapper adminMapper, UmsAdminRoleRelationMapper adminRoleRelationMapper,
+                               UmsAdminRoleRelationDao adminRoleRelationDao, UmsAdminLoginLogMapper loginLogMapper,
+                               UmsAdminCacheService adminCacheService) {
+        this.jwtTokenUtil = jwtTokenUtil;
+        this.passwordEncoder = passwordEncoder;
+        this.adminMapper = adminMapper;
+        this.adminRoleRelationMapper = adminRoleRelationMapper;
+        this.adminRoleRelationDao = adminRoleRelationDao;
+        this.loginLogMapper = loginLogMapper;
+        this.adminCacheService = adminCacheService;
+    }
 
     @Override
     public UmsAdmin getAdminByUsername(String username) {
         UmsAdmin admin = adminCacheService.getAdmin(username);
-        if(admin!=null) return  admin;
+        if (admin != null) {
+            return admin;
+        }
         UmsAdminExample example = new UmsAdminExample();
         example.createCriteria().andUsernameEqualTo(username);
         List<UmsAdmin> adminList = adminMapper.selectByExample(example);
