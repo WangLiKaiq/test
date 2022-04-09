@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @Author komorebi 2022-04-05
+ * @Author komorebi
  * @Date 2022-04-05
  * JWT登录授权过滤器
  * Created by macro on 2018/4/26.

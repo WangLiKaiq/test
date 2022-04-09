@@ -14,7 +14,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +25,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * 后台用户管理Controller
- * Created by macro on 2018/4/26.
+ * @Author komorebi
+ * @Date 2022-04-09
  */
 @RestController
 @Api(tags = "UmsAdminController", description = "后台用户管理")
@@ -37,10 +36,14 @@ public class UmsAdminController {
     private String tokenHeader;
     @Value("${jwt.tokenHead}")
     private String tokenHead;
-    @Autowired
     private UmsAdminService adminService;
-    @Autowired
     private UmsRoleService roleService;
+
+    @Autowired
+    public UmsAdminController(UmsAdminService adminService, UmsRoleService roleService) {
+        this.adminService = adminService;
+        this.roleService = roleService;
+    }
 
     @ApiOperation(value = "用户注册")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
