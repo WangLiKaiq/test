@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 /**
- * @Author Using this class to test UmsAdminController.
+ * @author Using this class to test UmsAdminController.
  */
 @DisplayName("Test for UmsAdminController")
 @RunWith(SpringJUnit4ClassRunner.class)

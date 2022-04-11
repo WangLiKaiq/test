@@ -16,8 +16,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 
 /**
- * @Author komorebi
- * @Date 2022-04-05
+ * @author komorebi
+ * @since 2022-04-05
  * 对SpringSecurity配置类的扩展，支持自定义白名单资源路径和查询用户逻辑
  * Created by macro on 2019/11/5.
  */

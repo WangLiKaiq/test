@@ -9,8 +9,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * @Author komorebi
- * @Date 2022-04-4
+ * @author komorebi
+ * @since 2022-04-4
  * This bean is used to generate beans for security configuration.
  */
 @Configuration

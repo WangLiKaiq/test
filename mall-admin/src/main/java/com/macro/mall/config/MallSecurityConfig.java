@@ -17,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * mall-security模块相关配置
  *
  * @author Komorebi
- * @date 2022-04-04
+ * @since 2022-04-04
  */
 @Configuration
 @EnableWebSecurity

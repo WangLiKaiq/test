@@ -12,8 +12,8 @@ import javax.annotation.PostConstruct;
 import java.util.*;
 
 /**
- * @Author komorebi 2022-04-05
- * @Date 2022-04-05
+ * @author komorebi 2022-04-05
+ * @since 2022-04-05
  * 动态权限数据源，用于获取动态权限规则
  * Created by macro on 2020/2/7.
  */

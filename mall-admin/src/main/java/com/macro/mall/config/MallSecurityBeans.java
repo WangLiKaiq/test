@@ -13,8 +13,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @Author komorebi
- * @Date 2022-04-05
+ * @author komorebi
+ * @since 2022-04-05
  * Using this Configuration to generate beans that pertain to security.
  */
 @Configuration
