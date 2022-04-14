@@ -110,6 +110,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         try {
             UserDetails userDetails = loadUserByUsername(username);
             if(!passwordEncoder.matches(password,userDetails.getPassword())){
+
                 Asserts.fail("密码不正确");
             }
             if(!userDetails.isEnabled()){
